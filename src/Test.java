@@ -5,6 +5,7 @@ import java.util.ArrayList;
  * Created by Igor on 18.10.2015.
  */
 public class Test {
+	//our test
     public static void main(String[] args) throws IOException {
         ArrayList<Atribute> atributes = new ArrayList<>();
         atributes.add(new Atribute("Id", "int", true));
@@ -12,7 +13,8 @@ public class Test {
         atributes.add(new Atribute("E-mail", "String", false));
         atributes.add(new Atribute("Address", "String", false));
         ArrayList<Table> tables = new ArrayList<>();
-        Table table1 = new Table("Students", atributes);Database database = new Database();
+        Table table1 = new Table("Students", atributes);
+        Database database = new Database();
         database.addTable(table1);
         atributes = new ArrayList<>();
         atributes.add(new Atribute("Id", "int", true));
@@ -38,7 +40,7 @@ public class Test {
         values.add("igorzub93@gmail.com");
         values.add("exampleAddress");
         database.insert("Students", values);
-        System.out.println(database.find("Students", "2"));
+        //System.out.println(database.find("Students", "2"));
         //database.delete("Students", "1");
         database.delete("Students", "3");
 
