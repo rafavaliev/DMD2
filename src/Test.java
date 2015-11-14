@@ -12,7 +12,7 @@ public class Test {
         atributes.add(new Atribute("Name", "String", false));
         atributes.add(new Atribute("E-mail", "String", false));
         atributes.add(new Atribute("Address", "String", false));
-        ArrayList<Table> tables = new ArrayList<>();
+
         Table table1 = new Table("Students", atributes);
         Database database = new Database();
         database.addTable(table1);
@@ -40,9 +40,16 @@ public class Test {
         values.add("igorzub93@gmail.com");
         values.add("exampleAddress");
         database.insert("Students", values);
+        database.delete("Students", "3");
+        database.addTable(table1);
+        values = new ArrayList<>();
+        values.add("1");
+        values.add("Igor");
+        values.add("Designation");
+        values.add("exampleAddress");
+        database.insert("Employee", values);
         //System.out.println(database.find("Students", "2"));
         //database.delete("Students", "1");
-        database.delete("Students", "3");
 
 
 

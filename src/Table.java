@@ -28,19 +28,14 @@ public class Table {
         this.position = position;
     }
 
-    public void updateSize(RandomAccessFile raf) throws IOException {
+    public void updateSize(RandomAccessFile raf, int update) throws IOException {
         raf.seek(sizePointer);
-        // read current size
-        StringBuilder size = new StringBuilder();
-        char c =  (char)raf.readByte();
-        while (c != ' ' && c != '\u0000') {
-            size.append(c);
-            c = (char)raf.readByte();
+        String newSize = String.valueOf(this.size + update);
+        // if amount of bytes decreased, write empty bytes
+        while (newSize.length() < String.valueOf(this.size).length()) {
+            newSize += " ";
         }
-        // increase
-        int newSize = Integer.parseInt(size.toString()) + 1;
-        raf.seek(sizePointer);
-        raf.writeBytes(String.valueOf(newSize));
+        raf.writeBytes(newSize);
     }
 
     public void updateOffset(RandomAccessFile raf, int amount) throws IOException {
@@ -62,6 +57,11 @@ public class Table {
         raf.seek(freeSpacePointer);
         // write new position
         raf.writeBytes(String.valueOf(position));
+    }
+
+
+    public void updateIndexes() {
+        // TODO implement indexes update
     }
 
 
